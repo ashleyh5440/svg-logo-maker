@@ -15,3 +15,44 @@
 
 //need to add the prompts and questions
 //need to write a svg file and save to dist folder
+
+const inquirer = require("inquirer");
+const fs = require("fs");
+
+// questions for user
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'text',
+      message: "Enter 3 characters to appear in your logo."
+    },
+    {
+        type: 'input',
+        name: 'text color',
+        message: "Enter a color keyword OR a hexadecimal number for the text color."
+      },
+      {
+        type: 'list',
+        name: 'shape',
+        message: "Choose a shape:",
+        choices: ["circle", "triangle", "square"]
+      },
+      {
+        type: 'input',
+        name: 'shape color',
+        message: "Enter a color keyword OR a hexadecimal number for the shape color."
+      }
+  ])
+  .then((answers) => {
+    //user feed back
+    console.log(answers);
+    const readmeContent = generateMarkdown(answers);
+    fs.writeFile("dist/log.svg", readmeContent, function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Successfully created logo");
+      }
+    });
+   })
