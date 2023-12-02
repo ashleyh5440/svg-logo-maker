@@ -14,10 +14,14 @@
 // THEN I am shown a 300x200 pixel image that matches the criteria I entered
 
 //need to add the prompts and questions
-//need to write a svg file and save to dist folder
+//need a function to create the file based on user answers
+//need to save file to dist folder
+//need 4 classes for shape, triangle, circle, and square
+//need tests for each class using Jest
 
 const inquirer = require("inquirer");
 const fs = require("fs");
+const SVG = require("svg.js")
 
 // questions for user
 inquirer
@@ -29,7 +33,7 @@ inquirer
     },
     {
         type: 'input',
-        name: 'text color',
+        name: 'textColor',
         message: "Enter a color keyword OR a hexadecimal number for the text color."
       },
       {
@@ -40,15 +44,15 @@ inquirer
       },
       {
         type: 'input',
-        name: 'shape color',
+        name: 'shapeColor',
         message: "Enter a color keyword OR a hexadecimal number for the shape color."
       }
   ])
   .then((answers) => {
     //user feed back
     console.log(answers);
-    const readmeContent = generateMarkdown(answers);
-    fs.writeFile("dist/log.svg", readmeContent, function(err) {
+    const logo = generateLogo(answers);
+    fs.writeFile("dist/logo.svg", logo, function(err) {
       if (err) {
         console.log(err);
       } else {
