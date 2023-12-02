@@ -23,6 +23,26 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const {Circle, Triangle, Square} = require("./lib/shapes");
 
+//function to generate the logo
+function generateLogo({ text, textColor, shape, shapeColor }) {
+  let shapeObject;
+
+  //switch statement to shape object based on user input
+  switch (shape) {
+    case 'circle':
+      shapeObject = new Circle(shapeColor);
+      break;
+    case 'triangle':
+      shapeObject = new Triangle(shapeColor);
+      break;
+    case 'square':
+      shapeObject = new Square(shapeColor);
+      break;
+    default:
+      throw new Error('Invalid shape');
+  }
+}
+
 // questions for user
 inquirer
   .prompt([
