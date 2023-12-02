@@ -21,7 +21,7 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs");
-const SVG = require("svg.js")
+const {Circle, Triangle, Square} = require("./lib/shapes");
 
 // questions for user
 inquirer
