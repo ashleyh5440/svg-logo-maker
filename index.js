@@ -30,17 +30,20 @@ function generateLogo({ text, textColor, shape, shapeColor }) {
   //switch statement to shape object based on user input
   switch (shape) {
     case 'circle':
-      shapeObject = new Circle(shapeColor);
+      shapeObject = new Circle(shapeColor, text, textColor);
       break;
     case 'triangle':
-      shapeObject = new Triangle(shapeColor);
+      shapeObject = new Triangle(shapeColor, text, textColor);
       break;
     case 'square':
-      shapeObject = new Square(shapeColor);
+      shapeObject = new Square(shapeColor, text, textColor);
       break;
     default:
       throw new Error('Invalid shape');
   }
+  //main SVG, works like a container for the shape
+  const shapeSvg = shapeObject.render();
+  return shapeSvg
 }
 
 // questions for user
@@ -49,7 +52,8 @@ inquirer
     {
       type: 'input',
       name: 'text',
-      message: "Enter 3 characters to appear in your logo."
+      message: "Enter 3 characters to appear in your logo.",
+      validate: (text) => text.length <= 3 || "Text cannot be longer than three characters."
     },
     {
         type: 'input',
