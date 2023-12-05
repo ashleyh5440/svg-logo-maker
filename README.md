@@ -24,5 +24,9 @@
   ## Questions
   If you have any questions, you can email me at ashleyh5440@gmail.com.
   You can see more of my work at [ashleyh5440](https://github.com/ashleyh5440)
+
   
+https://github.com/ashleyh5440/svg-logo-maker/assets/137733355/f76393a4-f4f5-4cdc-923e-491354d5e3de
+
+
 
